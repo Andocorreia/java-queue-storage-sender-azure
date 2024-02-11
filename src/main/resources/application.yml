@@ -3,7 +3,7 @@ info:
     name: Serviço Treinamento Queue Storage - Sender
 
 server:
-  port: 8081
+  port: 8080
 
 spring:
   profiles:

@@ -20,9 +20,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
-       <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
         <org.projectlombok.version>1.18.24</org.projectlombok.version>
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
+        <bom.version.to.target>1.2.19</bom.version.to.target>
     </properties>
 
     <dependencies>
@@ -45,6 +46,15 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
             <version>3.2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-storage-queue</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-identity</artifactId>
         </dependency>
 
     </dependencies>
@@ -86,4 +96,15 @@
         </plugins>
     </build>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.azure</groupId>
+                <artifactId>azure-sdk-bom</artifactId>
+                <version>${bom.version.to.target}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

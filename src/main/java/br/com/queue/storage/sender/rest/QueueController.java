@@ -43,5 +43,16 @@ public class QueueController {
 
 	}
 
+	@GetMapping("/receiveMessage")
+	public void receiveMessageMessage() {
+
+		Queue createClient = new Queue();
+		QueueClient queue = createClient.getQueue();
+
+		AzureQueueMessage sendMessage = new AzureQueueMessage();
+		sendMessage.receiveMessage(queue);
+
+	}
+
 
 }

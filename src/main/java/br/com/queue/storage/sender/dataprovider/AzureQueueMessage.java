@@ -22,4 +22,21 @@ public class AzureQueueMessage {
 				.map(peekedMessageItem -> peekedMessageItem.getBody().toString()).collect(Collectors.toList());
 
 	}
+
+	public void receiveMessage(QueueClient queueClient){
+		System.out.println("Receive at the messages in the queue..." + queueClient.getQueueName());
+
+		// Get messages from the queue
+		queueClient.receiveMessages(10).forEach(
+				// "Process" the message
+				receivedMessage -> {
+					System.out.println("Message: " + receivedMessage.getMessageText());
+
+					// Let the service know we're finished with
+					// the message and it can be safely deleted.
+					queueClient.deleteMessage(receivedMessage.getMessageId(), receivedMessage.getPopReceipt());
+				}
+		);
+
+	}
 }

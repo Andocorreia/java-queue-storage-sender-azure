@@ -1,2 +1,9 @@
 # java-queue-storage-sender-azure
-Mensageria com Azure Queue Storage
+Envio de mensagens ao Azure Queue Storage
+
+## Stack
+- Java 17
+- Spring Boot
+- Maven
+- Azure Queue Storage
+
